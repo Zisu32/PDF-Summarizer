@@ -7,6 +7,11 @@ import 'package:file_picker/file_picker.dart';
 import 'package:syncfusion_flutter_pdf/pdf.dart';
 import 'package:path_provider/path_provider.dart';
 
+const Color blue = Colors.blue;
+const Color grey = Colors.grey;
+const Color white = Colors.white;
+const Color black = Colors.black;
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -32,7 +37,7 @@ class _HomePageState extends State<HomePage> {
       user: geminiUser,
       createdAt: DateTime.now(),
       text:
-          "Hello! I'm Gemini, your assistant for summarizing PDF files. To upload a PDF for summary, just tap the purple button in the bottom right corner. For downloading the result as PDF press the purple download button",
+      "Hello! I'm Gemini, your assistant for summarizing PDF files. To upload a PDF for summary, just tap the blue button in the bottom right corner. For downloading the result as PDF press the blue download button",
     );
 
     setState(() {
@@ -44,14 +49,17 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: blue,
         centerTitle: true,
-        title: const Text(
-          "PDFSum",
-          style: TextStyle(
-            color: Colors.white,
-          ),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              'assets/PDF-SumLogo.png',
+              height: 30, // Adjust the height as needed
+            )
+          ],
         ),
-        backgroundColor: Colors.deepPurple,
       ),
       body: _buildUI(),
     );
@@ -60,36 +68,45 @@ class _HomePageState extends State<HomePage> {
   Widget _buildUI() {
     return DashChat(
       inputOptions: InputOptions(
+        sendButtonBuilder: (void Function()? onSend) {
+          return IconButton(
+            onPressed: onSend,
+            icon: Icon(
+              Icons.send,
+              color: blue,
+            ),
+          );
+        },
         trailing: [
           Row(
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
                 decoration: const BoxDecoration(
-                  color: Colors.deepPurple,
+                  color: blue,
                   shape: BoxShape.circle,
                 ),
                 child: IconButton(
                   onPressed: _sendPDFMessage,
                   icon: const Icon(
                     Icons.picture_as_pdf,
-                    color: Colors.white,
+                    color: white,
                   ),
                 ),
               ),
               const SizedBox(width: 8),
               Container(
                 decoration: BoxDecoration(
-                  color: _isSummaryAvailable ? Colors.deepPurple : Colors.grey,
+                  color: _isSummaryAvailable ? blue : grey,
                   shape: BoxShape.circle,
                 ),
                 child: IconButton(
                   onPressed: _isSummaryAvailable
                       ? _downloadResponseAsPDF
-                      : null, // Disable if no summary
+                      : null,
                   icon: const Icon(
                     Icons.download,
-                    color: Colors.white,
+                    color: white,
                   ),
                 ),
               ),
@@ -100,8 +117,15 @@ class _HomePageState extends State<HomePage> {
       currentUser: currentUser,
       onSend: _sendMessage,
       messages: messages,
+      // Customizing message bubbles
+      messageOptions: MessageOptions(
+        currentUserContainerColor: blue, // Sent message bubble color
+        currentUserTextColor: white, // Text color for sent messages
+      ),
     );
   }
+
+
 
   void _sendMessage(ChatMessage chatMessage) {
     setState(() {
@@ -115,7 +139,7 @@ class _HomePageState extends State<HomePage> {
         if (lastMessage != null && lastMessage.user == geminiUser) {
           lastMessage = messages.removeAt(0);
           String response = event.content?.parts?.fold(
-                  "", (previous, current) => "$previous${current.text}") ??
+              "", (previous, current) => "$previous${current.text}") ??
               "";
           lastMessage.text += response;
           setState(() {
@@ -123,7 +147,7 @@ class _HomePageState extends State<HomePage> {
           });
         } else {
           String response = event.content?.parts?.fold(
-                  "", (previous, current) => "$previous${current.text}") ??
+              "", (previous, current) => "$previous${current.text}") ??
               "";
           ChatMessage message = ChatMessage(
             user: geminiUser,
@@ -178,7 +202,7 @@ class _HomePageState extends State<HomePage> {
   void _downloadResponseAsPDF() async {
     if (messages.isNotEmpty) {
       ChatMessage? latestGeminiResponse = messages.firstWhere(
-        (message) => message.user.id == geminiUser.id,
+            (message) => message.user.id == geminiUser.id,
         orElse: () => ChatMessage(
           user: geminiUser,
           createdAt: DateTime.now(),
@@ -189,8 +213,6 @@ class _HomePageState extends State<HomePage> {
       // Create a PDF document
       final PdfDocument document = PdfDocument();
       final PdfPage page = document.pages.add();
-
-      // Add text to the PDF page
       page.graphics.drawString(
         latestGeminiResponse.text,
         PdfStandardFont(PdfFontFamily.helvetica, 18),
@@ -218,13 +240,13 @@ class _HomePageState extends State<HomePage> {
     try {
       // Load the PDF document
       final PdfDocument document =
-          PdfDocument(inputBytes: file.readAsBytesSync());
+      PdfDocument(inputBytes: file.readAsBytesSync());
       String extractedText = "";
 
       // Iterate through all pages to extract text
       for (int i = 0; i < document.pages.count; i++) {
         extractedText += PdfTextExtractor(document)
-                .extractText(startPageIndex: i, endPageIndex: i) ??
+            .extractText(startPageIndex: i, endPageIndex: i) ??
             "";
       }
 
@@ -242,9 +264,9 @@ class _HomePageState extends State<HomePage> {
     try {
       String summary = "";
       await for (var event
-          in gemini.streamGenerateContent("Summarize this PDF:\n$pdfText")) {
+      in gemini.streamGenerateContent("Summarize this PDF:\n$pdfText")) {
         summary += event.content?.parts
-                ?.fold("", (previous, current) => "$previous${current.text}") ??
+            ?.fold("", (previous, current) => "$previous${current.text}") ??
             "";
       }
       return summary;

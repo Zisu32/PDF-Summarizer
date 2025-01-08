@@ -7,10 +7,10 @@ import 'package:file_picker/file_picker.dart';
 import 'package:syncfusion_flutter_pdf/pdf.dart';
 import 'package:path_provider/path_provider.dart';
 
-const Color blue = Colors.blue;
+const Color teal = Colors.teal;
 const Color grey = Colors.grey;
 const Color white = Colors.white;
-const Color black = Colors.black;
+const Color black = Colors.black12;
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
       user: geminiUser,
       createdAt: DateTime.now(),
       text:
-      "Hello! I'm Gemini, your assistant for summarizing PDF files. To upload a PDF for summary, just tap the blue button in the bottom right corner. For downloading the result as PDF press the blue download button",
+          "Hello! I'm Gemini, your assistant for summarizing PDF files. To upload a PDF for summary, just tap the tale button in the bottom right corner.",
     );
 
     setState(() {
@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: blue,
+        backgroundColor: teal,
         centerTitle: true,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -61,71 +61,71 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      body: _buildUI(),
+      body: _bodyUI(),
     );
   }
 
-  Widget _buildUI() {
-    return DashChat(
-      inputOptions: InputOptions(
-        sendButtonBuilder: (void Function()? onSend) {
-          return IconButton(
-            onPressed: onSend,
-            icon: Icon(
-              Icons.send,
-              color: blue,
+  Widget _bodyUI() {
+    return Container(
+      color: black,
+      child: DashChat(
+        inputOptions: InputOptions(
+          sendButtonBuilder: (void Function()? onSend) {
+            return IconButton(
+              onPressed: onSend,
+              icon: const Icon(
+                Icons.send,
+                color: teal,
+              ),
+            );
+          },
+          trailing: [
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const SizedBox(width: 10),
+                Container(
+                  decoration: const BoxDecoration(
+                    color: teal,
+                    shape: BoxShape.circle,
+                  ),
+                  child: IconButton(
+                    onPressed: _sendPDFMessage,
+                    icon: const Icon(
+                      Icons.picture_as_pdf,
+                      color: white,
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Container(
+                  decoration: BoxDecoration(
+                    color: _isSummaryAvailable ? teal : Colors.black12,
+                    shape: BoxShape.circle,
+                  ),
+                  child: IconButton(
+                    onPressed:
+                        _isSummaryAvailable ? _downloadResponseAsPDF : null,
+                    icon: const Icon(
+                      Icons.download,
+                      color: Colors.black12,
+                    ),
+                  ),
+                ),
+              ],
             ),
-          );
-        },
-        trailing: [
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Container(
-                decoration: const BoxDecoration(
-                  color: blue,
-                  shape: BoxShape.circle,
-                ),
-                child: IconButton(
-                  onPressed: _sendPDFMessage,
-                  icon: const Icon(
-                    Icons.picture_as_pdf,
-                    color: white,
-                  ),
-                ),
-              ),
-              const SizedBox(width: 8),
-              Container(
-                decoration: BoxDecoration(
-                  color: _isSummaryAvailable ? blue : grey,
-                  shape: BoxShape.circle,
-                ),
-                child: IconButton(
-                  onPressed: _isSummaryAvailable
-                      ? _downloadResponseAsPDF
-                      : null,
-                  icon: const Icon(
-                    Icons.download,
-                    color: white,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
-      currentUser: currentUser,
-      onSend: _sendMessage,
-      messages: messages,
-      // Customizing message bubbles
-      messageOptions: MessageOptions(
-        currentUserContainerColor: blue, // Sent message bubble color
-        currentUserTextColor: white, // Text color for sent messages
+          ],
+        ),
+        currentUser: currentUser,
+        onSend: _sendMessage,
+        messages: messages,
+        messageOptions: const MessageOptions(
+          currentUserContainerColor: teal,
+          currentUserTextColor: white,
+        ),
       ),
     );
   }
-
-
 
   void _sendMessage(ChatMessage chatMessage) {
     setState(() {
@@ -139,7 +139,7 @@ class _HomePageState extends State<HomePage> {
         if (lastMessage != null && lastMessage.user == geminiUser) {
           lastMessage = messages.removeAt(0);
           String response = event.content?.parts?.fold(
-              "", (previous, current) => "$previous${current.text}") ??
+                  "", (previous, current) => "$previous${current.text}") ??
               "";
           lastMessage.text += response;
           setState(() {
@@ -147,7 +147,7 @@ class _HomePageState extends State<HomePage> {
           });
         } else {
           String response = event.content?.parts?.fold(
-              "", (previous, current) => "$previous${current.text}") ??
+                  "", (previous, current) => "$previous${current.text}") ??
               "";
           ChatMessage message = ChatMessage(
             user: geminiUser,
@@ -199,10 +199,50 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  Future<String> _extractTextFromPDF(File file) async {
+    try {
+      // Load the PDF document
+      final PdfDocument document =
+          PdfDocument(inputBytes: file.readAsBytesSync());
+      String extractedText = "";
+
+      // Iterate through all pages to extract text
+      for (int i = 0; i < document.pages.count; i++) {
+        extractedText += PdfTextExtractor(document)
+                .extractText(startPageIndex: i, endPageIndex: i) ??
+            "";
+      }
+
+      // Dispose the document
+      document.dispose();
+
+      return extractedText;
+    } catch (e) {
+      print("Error extracting text from PDF: $e");
+      return "";
+    }
+  }
+
+  Future<String> _summarizePDFText(String pdfText) async {
+    try {
+      String summary = "";
+      await for (var event
+          in gemini.streamGenerateContent("Summarize this PDF:\n$pdfText")) {
+        summary += event.content?.parts
+                ?.fold("", (previous, current) => "$previous${current.text}") ??
+            "";
+      }
+      return summary;
+    } catch (e) {
+      print("Error summarizing PDF text: $e");
+      return "Failed to summarize the PDF.";
+    }
+  }
+
   void _downloadResponseAsPDF() async {
     if (messages.isNotEmpty) {
       ChatMessage? latestGeminiResponse = messages.firstWhere(
-            (message) => message.user.id == geminiUser.id,
+        (message) => message.user.id == geminiUser.id,
         orElse: () => ChatMessage(
           user: geminiUser,
           createdAt: DateTime.now(),
@@ -233,46 +273,6 @@ class _HomePageState extends State<HomePage> {
         SnackBar(content: Text("PDF saved at: $path")),
       );
       print(path);
-    }
-  }
-
-  Future<String> _extractTextFromPDF(File file) async {
-    try {
-      // Load the PDF document
-      final PdfDocument document =
-      PdfDocument(inputBytes: file.readAsBytesSync());
-      String extractedText = "";
-
-      // Iterate through all pages to extract text
-      for (int i = 0; i < document.pages.count; i++) {
-        extractedText += PdfTextExtractor(document)
-            .extractText(startPageIndex: i, endPageIndex: i) ??
-            "";
-      }
-
-      // Dispose the document
-      document.dispose();
-
-      return extractedText;
-    } catch (e) {
-      print("Error extracting text from PDF: $e");
-      return "";
-    }
-  }
-
-  Future<String> _summarizePDFText(String pdfText) async {
-    try {
-      String summary = "";
-      await for (var event
-      in gemini.streamGenerateContent("Summarize this PDF:\n$pdfText")) {
-        summary += event.content?.parts
-            ?.fold("", (previous, current) => "$previous${current.text}") ??
-            "";
-      }
-      return summary;
-    } catch (e) {
-      print("Error summarizing PDF text: $e");
-      return "Failed to summarize the PDF.";
     }
   }
 

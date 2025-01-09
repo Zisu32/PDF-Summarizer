@@ -21,10 +21,10 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final Gemini gemini = Gemini.instance;
   List<ChatMessage> messages = [];
+  String welcomeMsg = "Hello! I'm Gemini, your assistant for summarizing PDF files. To upload a PDF for summary, just tap the green button in the bottom right corner.";
   ChatUser currentUser = ChatUser(id: "0", firstName: "You");
   ChatUser geminiUser = ChatUser(id: "1", firstName: "Gemini");
   bool _isSummaryAvailable = false;
-
   @override
   void initState() {
     super.initState();
@@ -35,8 +35,8 @@ class _HomePageState extends State<HomePage> {
     ChatMessage welcomeMessage = ChatMessage(
       user: geminiUser,
       createdAt: DateTime.now(),
-      text:
-          "Hello! I'm Gemini, your assistant for summarizing PDF files. To upload a PDF for summary, just tap the green button in the bottom right corner.",
+      text: welcomeMsg
+
     );
 
     setState(() {
@@ -193,7 +193,10 @@ class _HomePageState extends State<HomePage> {
             "";
 
         responseBuffer.write(partialResponse);
-        String completeResponse = responseBuffer.toString();
+      },
+          onDone: () {
+            // When the streaming is done, process the complete response
+            String completeResponse = responseBuffer.toString();
 
         setState(() {
           if (messages.isNotEmpty && messages.first.user == geminiUser) {
@@ -274,16 +277,24 @@ class _HomePageState extends State<HomePage> {
                   "", (previous, current) => "$previous${current.text}") ??
               "";
           responseBuffer.write(partialResponse);
+        },
+        onDone: () {
+          // When the streaming is done, process the complete response
           String completeResponse = responseBuffer.toString();
 
           setState(() {
             if (messages.isNotEmpty && messages.first.user == geminiUser) {
-              messages[0] = ChatMessage(
-                user: geminiUser,
-                createdAt: DateTime.now(),
-                text: completeResponse,
-              );
+              // Append the new response as a new message, preserving the previous one
+              messages = [
+                ChatMessage(
+                  user: geminiUser,
+                  createdAt: DateTime.now(),
+                  text: completeResponse,
+                ),
+                ...messages, // Add previous messages without replacement
+              ];
             } else {
+              // Add the new response as the first message
               messages = [
                 ChatMessage(
                   user: geminiUser,
@@ -293,11 +304,11 @@ class _HomePageState extends State<HomePage> {
                 ...messages,
               ];
             }
+            // Ensure that only one summary message remains
             _isSummaryAvailable = true;
           });
         },
       );
-
       Navigator.of(context).pop();
     } catch (e) {
       Navigator.of(context).pop();

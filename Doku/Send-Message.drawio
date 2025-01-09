@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36" version="26.0.4">
   <diagram name="Page-1" id="2YBvvXClWsGukQMizWep">
-    <mxGraphModel dx="2284" dy="756" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2216" dy="720" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -40,147 +40,160 @@
         <mxCell id="sqtUy3tX6Bb1NeOxKFOT-73" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=none;strokeColor=#990000;" parent="1" vertex="1">
           <mxGeometry x="600" y="265" width="50" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-31" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#fad9d5;strokeColor=#ae4132;" vertex="1" parent="1">
+        <mxCell id="aUTt_VUyVBzmJmMFJV63-31" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#fad9d5;strokeColor=#ae4132;" parent="1" vertex="1">
           <mxGeometry x="-30" y="1047.5" width="30" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-32" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=none;strokeColor=#990000;" vertex="1" parent="1">
+        <mxCell id="aUTt_VUyVBzmJmMFJV63-32" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=none;strokeColor=#990000;" parent="1" vertex="1">
           <mxGeometry x="-40" y="1037.5" width="50" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="aUTt_VUyVBzmJmMFJV63-34" target="aUTt_VUyVBzmJmMFJV63-37">
+        <mxCell id="aUTt_VUyVBzmJmMFJV63-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="aUTt_VUyVBzmJmMFJV63-34" target="aUTt_VUyVBzmJmMFJV63-37" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-34" value="&lt;div&gt;&lt;b&gt;currentUser&lt;/b&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b1ddf0;strokeColor=#10739e;" vertex="1" parent="1">
+        <mxCell id="aUTt_VUyVBzmJmMFJV63-34" value="&lt;div&gt;&lt;b&gt;currentUser&lt;/b&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b1ddf0;strokeColor=#10739e;" parent="1" vertex="1">
           <mxGeometry x="470" y="540" width="310" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-37" value="&lt;div&gt;&lt;b&gt;sendMessage(chatMessage)&lt;br&gt;&lt;/b&gt;&lt;br&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;String userQuestion = chatMessage.text&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;spacingBottom=20;" vertex="1" parent="1">
+        <mxCell id="aUTt_VUyVBzmJmMFJV63-37" value="&lt;div&gt;&lt;b&gt;sendMessage(chatMessage)&lt;br&gt;&lt;/b&gt;&lt;br&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;String userQuestion = chatMessage.text&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;spacingBottom=20;" parent="1" vertex="1">
           <mxGeometry x="470" y="650" width="310" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-107" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="aUTt_VUyVBzmJmMFJV63-39" target="aUTt_VUyVBzmJmMFJV63-46">
+        <mxCell id="aUTt_VUyVBzmJmMFJV63-107" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="aUTt_VUyVBzmJmMFJV63-39" target="aUTt_VUyVBzmJmMFJV63-46" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-39" value="gemini.streamGenerateContent(&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;userQuestion&lt;/font&gt;)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;" vertex="1" parent="1">
+        <mxCell id="aUTt_VUyVBzmJmMFJV63-39" value="gemini.streamGenerateContent(&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;userQuestion&lt;/font&gt;)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;" parent="1" vertex="1">
           <mxGeometry x="470" y="770" width="310" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-40" value="&lt;b&gt;List&amp;lt;ChatMessages&amp;gt;&lt;/b&gt;&lt;div&gt;&lt;b&gt;messages&lt;/b&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bac8d3;strokeColor=#23445d;" vertex="1" parent="1">
+        <mxCell id="aUTt_VUyVBzmJmMFJV63-40" value="&lt;b&gt;List&amp;lt;ChatMessages&amp;gt;&lt;/b&gt;&lt;div&gt;&lt;b&gt;messages&lt;/b&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bac8d3;strokeColor=#23445d;" parent="1" vertex="1">
           <mxGeometry x="50" y="945" width="340" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-114" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="aUTt_VUyVBzmJmMFJV63-42" target="aUTt_VUyVBzmJmMFJV63-32">
+        <mxCell id="aUTt_VUyVBzmJmMFJV63-114" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="aUTt_VUyVBzmJmMFJV63-42" target="aUTt_VUyVBzmJmMFJV63-32" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-42" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;ChatMessage(content: &quot;I am fine.&quot; , user: geminiUser)&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;ChatMessage(content: &quot;How are you?&quot; , user: currentUser)&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;ChatMessage(content: &quot;Hello! I&#39;m Gemini, your assistant for summarizing PDF files...&quot; , user: geminiUser)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#bac8d3;strokeColor=#23445d;align=left;spacingLeft=10;spacingRight=10;" vertex="1" parent="1">
+        <mxCell id="aUTt_VUyVBzmJmMFJV63-42" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;ChatMessage(content: &quot;I am fine.&quot; , user: geminiUser)&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;ChatMessage(content: &quot;How are you?&quot; , user: currentUser)&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;ChatMessage(content: &quot;Hello! I&#39;m Gemini, your assistant for summarizing PDF files...&quot; , user: geminiUser)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#bac8d3;strokeColor=#23445d;align=left;spacingLeft=10;spacingRight=10;" parent="1" vertex="1">
           <mxGeometry x="50" y="995" width="340" height="135" as="geometry" />
         </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-44" value="&lt;b&gt;sendMessage(chatMessage)&lt;/b&gt;&lt;div&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;div&gt;&lt;font&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;String partialResponse = event.content?.parts?&lt;/font&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font&gt;&lt;font&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&amp;nbsp;String completeResponse = responseBuffer.toString();&lt;/font&gt;&lt;/font&gt;&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;spacingBottom=20;" vertex="1" parent="1">
+        <mxCell id="aUTt_VUyVBzmJmMFJV63-44" value="&lt;b&gt;sendMessage(chatMessage)&lt;/b&gt;&lt;div&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;div&gt;&lt;font&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;String partialResponse = event.content?.parts?&lt;/font&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font&gt;&lt;font&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&amp;nbsp;String completeResponse = responseBuffer.toString();&lt;/font&gt;&lt;/font&gt;&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;spacingBottom=20;" parent="1" vertex="1">
           <mxGeometry x="470" y="945" width="310" height="105" as="geometry" />
         </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="aUTt_VUyVBzmJmMFJV63-46" target="aUTt_VUyVBzmJmMFJV63-44">
+        <mxCell id="aUTt_VUyVBzmJmMFJV63-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="aUTt_VUyVBzmJmMFJV63-46" target="aUTt_VUyVBzmJmMFJV63-44" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-46" value="KI-API Gemini" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=1" vertex="1" parent="1">
+        <mxCell id="aUTt_VUyVBzmJmMFJV63-46" value="KI-API Gemini" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="470" y="850" width="310" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-113" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="aUTt_VUyVBzmJmMFJV63-49" target="aUTt_VUyVBzmJmMFJV63-34">
+        <mxCell id="aUTt_VUyVBzmJmMFJV63-113" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="aUTt_VUyVBzmJmMFJV63-49" target="aUTt_VUyVBzmJmMFJV63-34" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-49" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#fad9d5;strokeColor=#ae4132;" vertex="1" parent="1">
+        <mxCell id="aUTt_VUyVBzmJmMFJV63-49" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#fad9d5;strokeColor=#ae4132;" parent="1" vertex="1">
           <mxGeometry x="410" y="555" width="30" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-51" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;messages = [&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;chatMessage&lt;/font&gt;, ...messages]&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;" vertex="1" parent="1">
+        <mxCell id="aUTt_VUyVBzmJmMFJV63-51" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;messages = [&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;chatMessage&lt;/font&gt;, ...messages]&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;" parent="1" vertex="1">
           <mxGeometry x="470" y="730" width="310" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-112" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.999;entryY=0.187;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="aUTt_VUyVBzmJmMFJV63-53" target="aUTt_VUyVBzmJmMFJV63-42">
+        <mxCell id="aUTt_VUyVBzmJmMFJV63-112" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.999;entryY=0.187;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="aUTt_VUyVBzmJmMFJV63-53" target="aUTt_VUyVBzmJmMFJV63-42" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-53" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;font style=&quot;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;messages[0] =&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; text-align: center;&quot;&gt;completeResponse&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;fontColor=#000000;" vertex="1" parent="1">
+        <mxCell id="aUTt_VUyVBzmJmMFJV63-53" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;font style=&quot;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;messages[0] =&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; text-align: center;&quot;&gt;completeResponse&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;fontColor=#000000;" parent="1" vertex="1">
           <mxGeometry x="470" y="1070" width="310" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-58" value="&lt;b&gt;List&amp;lt;ChatMessages&amp;gt;&lt;/b&gt;&lt;div&gt;&lt;b&gt;messages&lt;/b&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bac8d3;strokeColor=#23445d;" vertex="1" parent="1">
+        <mxCell id="aUTt_VUyVBzmJmMFJV63-58" value="&lt;b&gt;List&amp;lt;ChatMessages&amp;gt;&lt;/b&gt;&lt;div&gt;&lt;b&gt;messages&lt;/b&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bac8d3;strokeColor=#23445d;" parent="1" vertex="1">
           <mxGeometry x="50" y="650" width="340" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-59" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;ChatMessage(content: &quot;How are you?&quot; ,&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;user: currentUser)&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;ChatMessage(content: &quot;Hello! I&#39;m Gemini, your assistant for summarizing PDF files...&quot; , user: geminiUser)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#bac8d3;strokeColor=#23445d;align=left;spacingLeft=10;spacingRight=10;" vertex="1" parent="1">
+        <mxCell id="aUTt_VUyVBzmJmMFJV63-59" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;ChatMessage(content: &quot;How are you?&quot; ,&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;user: currentUser)&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;ChatMessage(content: &quot;Hello! I&#39;m Gemini, your assistant for summarizing PDF files...&quot; , user: geminiUser)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#bac8d3;strokeColor=#23445d;align=left;spacingLeft=10;spacingRight=10;" parent="1" vertex="1">
           <mxGeometry x="50" y="700" width="340" height="110" as="geometry" />
         </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-82" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.315;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="aUTt_VUyVBzmJmMFJV63-51" target="aUTt_VUyVBzmJmMFJV63-59">
+        <mxCell id="aUTt_VUyVBzmJmMFJV63-82" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.315;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="aUTt_VUyVBzmJmMFJV63-51" target="aUTt_VUyVBzmJmMFJV63-59" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-83" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#fad9d5;strokeColor=#ae4132;" vertex="1" parent="1">
-          <mxGeometry x="205" y="2200" width="30" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-84" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=none;strokeColor=#990000;" vertex="1" parent="1">
-          <mxGeometry x="195" y="2190" width="50" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-85" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="aUTt_VUyVBzmJmMFJV63-86" target="aUTt_VUyVBzmJmMFJV63-87">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-86" value="&lt;div&gt;&lt;b&gt;currentUser&lt;/b&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b1ddf0;strokeColor=#10739e;" vertex="1" parent="1">
-          <mxGeometry x="470" y="1460" width="310" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-87" value="&lt;div&gt;&lt;b&gt;sendMessage(chatMessage)&lt;br&gt;&lt;/b&gt;&lt;br&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 204);&quot;&gt;String userQuestion = chatMessage.text&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;lastMessage = messages.firstOrNull&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;spacingBottom=20;" vertex="1" parent="1">
-          <mxGeometry x="470" y="1570" width="310" height="120" as="geometry" />
-        </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-88" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="aUTt_VUyVBzmJmMFJV63-89" target="aUTt_VUyVBzmJmMFJV63-105">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-89" value="gemini.streamGenerateContent(&lt;font style=&quot;color: rgb(0, 0, 204);&quot;&gt;userQuestion&lt;/font&gt;)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;" vertex="1" parent="1">
-          <mxGeometry x="470" y="1710" width="310" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-90" value="&lt;b&gt;List&amp;lt;ChatMessages&amp;gt;&lt;/b&gt;&lt;div&gt;&lt;b&gt;messages&lt;/b&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bac8d3;strokeColor=#23445d;" vertex="1" parent="1">
-          <mxGeometry x="50" y="1955" width="340" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-91" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="aUTt_VUyVBzmJmMFJV63-92" target="aUTt_VUyVBzmJmMFJV63-84">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-92" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;ChatMessage(content: &quot;I am fine.&quot; , user: geminiUser)&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;ChatMessage(content: &quot;How are you?&quot; ,&lt;br&gt;user: currentUser)&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;ChatMessage(content: &quot;Hello! I&#39;m Gemini, your assistant for summarizing PDF files...&quot; , user: geminiUser)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#bac8d3;strokeColor=#23445d;align=left;spacingLeft=10;spacingRight=10;" vertex="1" parent="1">
-          <mxGeometry x="50" y="2005" width="340" height="145" as="geometry" />
-        </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-93" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;lastMessage.user == currentUser&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="410" y="1795" width="200" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-94" value="String response = content?&lt;div&gt;&lt;font style=&quot;color: rgb(102, 0, 204);&quot;&gt;&lt;font style=&quot;color: rgb(102, 0, 204);&quot;&gt;lastMessage&lt;/font&gt;.text += response;&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;" vertex="1" parent="1">
-          <mxGeometry x="470" y="1955" width="310" height="70" as="geometry" />
-        </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-95" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="aUTt_VUyVBzmJmMFJV63-96" target="aUTt_VUyVBzmJmMFJV63-94">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-96" value="KI-API Gemini" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="470" y="1860" width="310" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-97" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="aUTt_VUyVBzmJmMFJV63-98">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="625" y="1460" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-98" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#fad9d5;strokeColor=#ae4132;" vertex="1" parent="1">
-          <mxGeometry x="610" y="1380" width="30" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-99" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;messages = [&lt;font style=&quot;color: rgb(0, 0, 204);&quot;&gt;chatMessage&lt;/font&gt;, ...messages]&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;" vertex="1" parent="1">
-          <mxGeometry x="470" y="1670" width="310" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-100" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="aUTt_VUyVBzmJmMFJV63-101">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="390" y="2035" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-101" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;messages = [&lt;/span&gt;&lt;span style=&quot;color: rgb(102, 0, 204); text-align: center;&quot;&gt;lastMessage!&lt;/span&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;, ...messages]&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;" vertex="1" parent="1">
-          <mxGeometry x="470" y="2015" width="310" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-102" value="&lt;b&gt;List&amp;lt;ChatMessages&amp;gt;&lt;/b&gt;&lt;div&gt;&lt;b&gt;messages&lt;/b&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bac8d3;strokeColor=#23445d;" vertex="1" parent="1">
-          <mxGeometry x="50" y="1570" width="340" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-103" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;ChatMessage(content: &quot;How are you?&quot; ,&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;user: currentUser)&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;ChatMessage(content: &quot;Hello! I&#39;m Gemini, your assistant for summarizing PDF files...&quot; , user: geminiUser)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#bac8d3;strokeColor=#23445d;align=left;spacingLeft=10;spacingRight=10;" vertex="1" parent="1">
-          <mxGeometry x="50" y="1620" width="340" height="130" as="geometry" />
-        </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-104" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="aUTt_VUyVBzmJmMFJV63-105" target="aUTt_VUyVBzmJmMFJV63-96">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-105" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;" vertex="1" parent="1">
-          <mxGeometry x="605" y="1790" width="40" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-106" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.342;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="aUTt_VUyVBzmJmMFJV63-99" target="aUTt_VUyVBzmJmMFJV63-103">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="aUTt_VUyVBzmJmMFJV63-108" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;responseBuffer.write(&lt;font&gt;partialResponse&lt;/font&gt;);&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;" vertex="1" parent="1">
+        <mxCell id="aUTt_VUyVBzmJmMFJV63-108" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;responseBuffer.write(&lt;font&gt;partialResponse&lt;/font&gt;);&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;" parent="1" vertex="1">
           <mxGeometry x="470" y="1030" width="310" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="jtuX2joYE_V0Zbzh-_II-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="jtuX2joYE_V0Zbzh-_II-4" target="jtuX2joYE_V0Zbzh-_II-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jtuX2joYE_V0Zbzh-_II-4" value="&lt;div&gt;&lt;b&gt;currentUser&lt;/b&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b1ddf0;strokeColor=#10739e;" vertex="1" parent="1">
+          <mxGeometry x="490" y="1280" width="310" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jtuX2joYE_V0Zbzh-_II-5" value="&lt;b&gt;sendPDFMessage( )&lt;br&gt;&lt;/b&gt;&lt;br&gt;&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;FilePickerResult? &lt;/span&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(153, 0, 153), rgb(255, 255, 255));&quot;&gt;result&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;File? &lt;/span&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 204), rgb(255, 255, 255));&quot;&gt;file&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;String? pdfText;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;spacingBottom=20;" vertex="1" parent="1">
+          <mxGeometry x="490" y="1460" width="310" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="jtuX2joYE_V0Zbzh-_II-7" value="&lt;font style=&quot;color: rgb(153, 0, 153);&quot;&gt;result &lt;/font&gt;= await FilePicker.platform.pickFiles()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;" vertex="1" parent="1">
+          <mxGeometry x="490" y="1550" width="310" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="jtuX2joYE_V0Zbzh-_II-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="jtuX2joYE_V0Zbzh-_II-13" target="jtuX2joYE_V0Zbzh-_II-42">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jtuX2joYE_V0Zbzh-_II-13" value="KI-API Gemini" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="490" y="1940" width="310" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jtuX2joYE_V0Zbzh-_II-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="jtuX2joYE_V0Zbzh-_II-15" target="jtuX2joYE_V0Zbzh-_II-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jtuX2joYE_V0Zbzh-_II-15" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#fad9d5;strokeColor=#ae4132;" vertex="1" parent="1">
+          <mxGeometry x="430" y="1295" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jtuX2joYE_V0Zbzh-_II-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="jtuX2joYE_V0Zbzh-_II-24" target="jtuX2joYE_V0Zbzh-_II-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jtuX2joYE_V0Zbzh-_II-24" value="press PDF upload Button" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;" vertex="1" parent="1">
+          <mxGeometry x="490" y="1380" width="310" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="jtuX2joYE_V0Zbzh-_II-27" value="&lt;font style=&quot;color: rgb(0, 0, 204);&quot;&gt;file &lt;/font&gt;= File(&lt;font style=&quot;color: rgb(153, 0, 153);&quot;&gt;result&lt;/font&gt;.files.single.path!);" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;" vertex="1" parent="1">
+          <mxGeometry x="490" y="1590" width="310" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="jtuX2joYE_V0Zbzh-_II-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;startArrow=classic;startFill=1;" edge="1" parent="1" source="jtuX2joYE_V0Zbzh-_II-28" target="jtuX2joYE_V0Zbzh-_II-29">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jtuX2joYE_V0Zbzh-_II-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="jtuX2joYE_V0Zbzh-_II-28" target="jtuX2joYE_V0Zbzh-_II-37">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jtuX2joYE_V0Zbzh-_II-28" value="pdfText = await _extractTextFromPDF(&lt;font style=&quot;color: rgb(0, 0, 204);&quot;&gt;file&lt;/font&gt;);" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;" vertex="1" parent="1">
+          <mxGeometry x="490" y="1630" width="310" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="jtuX2joYE_V0Zbzh-_II-29" value="&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&lt;font&gt;&lt;b&gt;extractTextFromPDF(&lt;font style=&quot;color: rgb(0, 0, 204);&quot;&gt;file&lt;/font&gt;)&lt;/b&gt;&lt;br&gt;&lt;/font&gt;&lt;br&gt;&lt;/font&gt;&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;String extractedText = &quot; &quot;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;return&amp;nbsp;&lt;/font&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;extractedText&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;spacingBottom=20;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1600" width="310" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="jtuX2joYE_V0Zbzh-_II-32" value="&lt;font&gt;document = PdfDocument(inputBytes: &lt;font style=&quot;color: rgb(0, 0, 204);&quot;&gt;file&lt;/font&gt;.readAsBytesSync());&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1680" width="310" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="jtuX2joYE_V0Zbzh-_II-33" value="extractedText += PdfTextExtractor(document)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1730" width="310" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="jtuX2joYE_V0Zbzh-_II-37" value="&lt;b&gt;sendPDFMessage( )&lt;br&gt;&lt;/b&gt;&lt;br&gt;&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;String? &lt;/span&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 204), rgb(255, 255, 255));&quot;&gt;pdfText&lt;/font&gt;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;spacingBottom=20;" vertex="1" parent="1">
+          <mxGeometry x="490" y="1780" width="310" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="jtuX2joYE_V0Zbzh-_II-41" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="jtuX2joYE_V0Zbzh-_II-39" target="jtuX2joYE_V0Zbzh-_II-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jtuX2joYE_V0Zbzh-_II-39" value="gemini.streamGenerateContent(&quot;Summarize this PDF:\n$&lt;font style=&quot;color: rgb(0, 0, 204);&quot;&gt;pdfText&lt;/font&gt;&quot;)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;" vertex="1" parent="1">
+          <mxGeometry x="490" y="1850" width="310" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="jtuX2joYE_V0Zbzh-_II-42" value="&lt;b&gt;sendPDFMessage( )&lt;/b&gt;&lt;div&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;div&gt;&lt;font&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;String partialResponse = event.content?.parts?&lt;/font&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font&gt;&lt;font&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&amp;nbsp;String completeResponse = responseBuffer.toString();&lt;/font&gt;&lt;/font&gt;&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;spacingBottom=20;" vertex="1" parent="1">
+          <mxGeometry x="490" y="2060" width="310" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="jtuX2joYE_V0Zbzh-_II-43" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;font style=&quot;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;messages[0] =&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; text-align: center;&quot;&gt;completeResponse&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="490" y="2185" width="310" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="jtuX2joYE_V0Zbzh-_II-44" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;responseBuffer.write(&lt;font&gt;partialResponse&lt;/font&gt;);&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;" vertex="1" parent="1">
+          <mxGeometry x="490" y="2145" width="310" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="jtuX2joYE_V0Zbzh-_II-46" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#fad9d5;strokeColor=#ae4132;" vertex="1" parent="1">
+          <mxGeometry x="-10" y="2162.5" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jtuX2joYE_V0Zbzh-_II-47" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=none;strokeColor=#990000;" vertex="1" parent="1">
+          <mxGeometry x="-20" y="2152.5" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="jtuX2joYE_V0Zbzh-_II-48" value="&lt;b&gt;List&amp;lt;ChatMessages&amp;gt;&lt;/b&gt;&lt;div&gt;&lt;b&gt;messages&lt;/b&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bac8d3;strokeColor=#23445d;" vertex="1" parent="1">
+          <mxGeometry x="70" y="2060" width="340" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jtuX2joYE_V0Zbzh-_II-49" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="jtuX2joYE_V0Zbzh-_II-50" target="jtuX2joYE_V0Zbzh-_II-47">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jtuX2joYE_V0Zbzh-_II-50" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;ChatMessage(content: &quot;I am fine.&quot; , user: geminiUser)&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;ChatMessage(content: &quot;Hello! I&#39;m Gemini, your assistant for summarizing PDF files...&quot; , user: geminiUser)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#bac8d3;strokeColor=#23445d;align=left;spacingLeft=10;spacingRight=10;" vertex="1" parent="1">
+          <mxGeometry x="70" y="2110" width="340" height="135" as="geometry" />
+        </mxCell>
+        <mxCell id="jtuX2joYE_V0Zbzh-_II-51" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.999;entryY=0.187;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" target="jtuX2joYE_V0Zbzh-_II-50" source="jtuX2joYE_V0Zbzh-_II-43">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="490" y="2205" as="sourcePoint" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>

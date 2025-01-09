@@ -200,7 +200,7 @@ class _HomePageState extends State<HomePage> {
             messages[0] = ChatMessage(
               user: geminiUser,
               createdAt: DateTime.now(),
-              text: responseBuffer.toString(),
+              text: completeResponse,
             );
           } else {
             messages = [

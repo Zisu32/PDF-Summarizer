@@ -1,4 +1,3 @@
-import 'dart:collection';
 import 'dart:io';
 import 'package:dash_chat_2/dash_chat_2.dart';
 import 'package:flutter/material.dart';
@@ -37,12 +36,65 @@ class _HomePageState extends State<HomePage> {
       user: geminiUser,
       createdAt: DateTime.now(),
       text:
-          "Hello! I'm Gemini, your assistant for summarizing PDF files. To upload a PDF for summary, just tap the tale button in the bottom right corner.",
+          "Hello! I'm Gemini, your assistant for summarizing PDF files. To upload a PDF for summary, just tap the green button in the bottom right corner.",
     );
 
     setState(() {
       messages = [welcomeMessage, ...messages];
     });
+  }
+
+  void _downloadResponseAsPDF() async {
+    if (messages.isNotEmpty) {
+      ChatMessage? latestGeminiResponse =
+          messages.firstWhere((message) => message.user == geminiUser);
+
+      // Create a PDF document
+      final PdfDocument document = PdfDocument();
+      final PdfPage page = document.pages.add();
+      page.graphics.drawString(
+        latestGeminiResponse.text,
+        PdfStandardFont(PdfFontFamily.helvetica, 18),
+      );
+
+      // Get the directory to save the file
+      final directory = await getApplicationDocumentsDirectory();
+      String formattedDate = DateTime.now().toString().replaceAll(':', '-');
+      String path = "${directory.path}/${formattedDate}_GeminiResponse.pdf";
+      // Save File to path
+      File file = File(path);
+      await file.writeAsBytes(await document.save());
+
+      // Dispose the document
+      document.dispose();
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("PDF saved at: $path")),
+      );
+      print(path);
+    }
+  }
+
+  void _showLoadingDialog() {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return const Dialog(
+          child: Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                CircularProgressIndicator(),
+                SizedBox(width: 16),
+                Text("Analyzing PDF, please wait..."),
+              ],
+            ),
+          ),
+        );
+      },
+    );
   }
 
   @override
@@ -106,9 +158,9 @@ class _HomePageState extends State<HomePage> {
                   child: IconButton(
                     onPressed:
                         _isSummaryAvailable ? _downloadResponseAsPDF : null,
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.download,
-                      color: Colors.black12,
+                      color: _isSummaryAvailable ? white : Colors.black12,
                     ),
                   ),
                 ),
@@ -133,31 +185,34 @@ class _HomePageState extends State<HomePage> {
     });
     try {
       String userQuestion = chatMessage.text;
+      StringBuffer responseBuffer = StringBuffer();
+
       gemini.streamGenerateContent(userQuestion).listen((event) {
-        ChatMessage? lastMessage = messages.firstOrNull;
-        // Check if the last message is from Gemini, if not, add the last message from Gemini to the list
-        if (lastMessage != null && lastMessage.user == geminiUser) {
-          lastMessage = messages.removeAt(0);
-          String response = event.content?.parts?.fold(
-                  "", (previous, current) => "$previous${current.text}") ??
-              "";
-          lastMessage.text += response;
-          setState(() {
-            messages = [lastMessage!, ...messages];
-          });
-        } else {
-          String response = event.content?.parts?.fold(
-                  "", (previous, current) => "$previous${current.text}") ??
-              "";
-          ChatMessage message = ChatMessage(
-            user: geminiUser,
-            createdAt: DateTime.now(),
-            text: response,
-          );
-          setState(() {
-            messages = [message, ...messages];
-          });
-        }
+        String partialResponse = event.content?.parts
+                ?.fold("", (previous, current) => "$previous${current.text}") ??
+            "";
+
+        responseBuffer.write(partialResponse);
+        String completeResponse = responseBuffer.toString();
+
+        setState(() {
+          if (messages.isNotEmpty && messages.first.user == geminiUser) {
+            messages[0] = ChatMessage(
+              user: geminiUser,
+              createdAt: DateTime.now(),
+              text: responseBuffer.toString(),
+            );
+          } else {
+            messages = [
+              ChatMessage(
+                user: geminiUser,
+                createdAt: DateTime.now(),
+                text: completeResponse,
+              ),
+              ...messages,
+            ];
+          }
+        });
       });
     } catch (e) {
       print(e);
@@ -166,135 +221,113 @@ class _HomePageState extends State<HomePage> {
 
   void _sendPDFMessage() async {
     _showLoadingDialog();
+    FilePickerResult? result;
+    File? file;
+    String? pdfText;
 
-    FilePickerResult? result = await FilePicker.platform.pickFiles();
-    if (result != null) {
-      File file = File(result.files.single.path!);
+    try {
+      result = await FilePicker.platform.pickFiles();
 
-      try {
-        String pdfText = await _extractTextFromPDF(file);
+      if (result == null) {
+        Navigator.of(context).pop(); // Close loadingDialog
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('No file selected')),
+        );
+        print("No file selected");
+        return;
+      } else {
+        file = File(result.files.single.path!);
+      }
+    } catch (e) {
+      Navigator.of(context).pop(); // Close loadingDialog
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Error during FilePicking')),
+      );
+      print("Error during FilePicking: $e");
+      return;
+    }
 
-        if (pdfText.isNotEmpty) {
-          String summarizedText = await _summarizePDFText(pdfText);
-          Navigator.of(context).pop();
-          ChatMessage message = ChatMessage(
-            user: geminiUser,
-            createdAt: DateTime.now(),
-            text: summarizedText,
-          );
+    try {
+      pdfText = await _extractTextFromPDF(file);
+
+      if (pdfText.isEmpty) {
+        Navigator.of(context).pop(); // Close loadingDialog
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Failed to extract text from the PDF.')),
+        );
+        print("Failed to extract text from the PDF.");
+        return;
+      }
+    } catch (e) {
+      Navigator.of(context).pop(); // Close loadingDialog
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Error during text extraction')),
+      );
+      print("Error during text extraction: $e");
+      return;
+    }
+    try {
+      StringBuffer responseBuffer = StringBuffer();
+      gemini.streamGenerateContent("Summarize this PDF:\n$pdfText").listen(
+        (event) {
+          String partialResponse = event.content?.parts?.fold(
+                  "", (previous, current) => "$previous${current.text}") ??
+              "";
+          responseBuffer.write(partialResponse);
+          String completeResponse = responseBuffer.toString();
 
           setState(() {
-            messages = [message, ...messages];
-            _isSummaryAvailable = true; // Enable the download button
+            if (messages.isNotEmpty && messages.first.user == geminiUser) {
+              messages[0] = ChatMessage(
+                user: geminiUser,
+                createdAt: DateTime.now(),
+                text: completeResponse,
+              );
+            } else {
+              messages = [
+                ChatMessage(
+                  user: geminiUser,
+                  createdAt: DateTime.now(),
+                  text: completeResponse,
+                ),
+                ...messages,
+              ];
+            }
+            _isSummaryAvailable = true;
           });
-        } else {
-          // Remove the loading dialog
-          Navigator.of(context).pop();
-          print("Failed to extract text from the PDF.");
-        }
-      } catch (e) {
-        print("Error during PDF analysis: $e");
-        Navigator.of(context).pop();
-      }
-    }
-  }
-
-  Future<String> _extractTextFromPDF(File file) async {
-    try {
-      // Load the PDF document
-      final PdfDocument document =
-          PdfDocument(inputBytes: file.readAsBytesSync());
-      String extractedText = "";
-
-      // Iterate through all pages to extract text
-      for (int i = 0; i < document.pages.count; i++) {
-        extractedText += PdfTextExtractor(document)
-                .extractText(startPageIndex: i, endPageIndex: i) ??
-            "";
-      }
-
-      // Dispose the document
-      document.dispose();
-
-      return extractedText;
-    } catch (e) {
-      print("Error extracting text from PDF: $e");
-      return "";
-    }
-  }
-
-  Future<String> _summarizePDFText(String pdfText) async {
-    try {
-      String summary = "";
-      await for (var event
-          in gemini.streamGenerateContent("Summarize this PDF:\n$pdfText")) {
-        summary += event.content?.parts
-                ?.fold("", (previous, current) => "$previous${current.text}") ??
-            "";
-      }
-      return summary;
-    } catch (e) {
-      print("Error summarizing PDF text: $e");
-      return "Failed to summarize the PDF.";
-    }
-  }
-
-  void _downloadResponseAsPDF() async {
-    if (messages.isNotEmpty) {
-      ChatMessage? latestGeminiResponse = messages.firstWhere(
-        (message) => message.user.id == geminiUser.id,
-        orElse: () => ChatMessage(
-          user: geminiUser,
-          createdAt: DateTime.now(),
-          text: "No response available to download.",
-        ),
+        },
       );
 
-      // Create a PDF document
-      final PdfDocument document = PdfDocument();
-      final PdfPage page = document.pages.add();
-      page.graphics.drawString(
-        latestGeminiResponse.text,
-        PdfStandardFont(PdfFontFamily.helvetica, 18),
-      );
-
-      // Get the directory to save the file
-      final directory = await getApplicationDocumentsDirectory();
-      String formattedDate = DateTime.now().toString().replaceAll(':', '-');
-      String path = "${directory.path}/${formattedDate}_GeminiResponse.pdf";
-      // Save File to path
-      File file = File(path);
-      await file.writeAsBytes(await document.save());
-
-      // Dispose the document
-      document.dispose();
-
+      Navigator.of(context).pop();
+    } catch (e) {
+      Navigator.of(context).pop();
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("PDF saved at: $path")),
+        const SnackBar(content: Text('Error during PDF analysis.')),
       );
-      print(path);
     }
   }
+}
 
-  void _showLoadingDialog() {
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (BuildContext context) {
-        return const Dialog(
-          child: Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                CircularProgressIndicator(),
-                SizedBox(width: 16),
-                Text("Analyzing PDF, please wait..."),
-              ],
-            ),
-          ),
-        );
-      },
-    );
+Future<String> _extractTextFromPDF(File file) async {
+  try {
+    // Load the PDF document
+    final PdfDocument document =
+        PdfDocument(inputBytes: file.readAsBytesSync());
+    String extractedText = "";
+
+    // Iterate through all pages to extract text
+    for (int i = 0; i < document.pages.count; i++) {
+      extractedText += PdfTextExtractor(document)
+              .extractText(startPageIndex: i, endPageIndex: i) ??
+          "";
+    }
+
+    // Dispose the document
+    document.dispose();
+
+    return extractedText;
+  } catch (e) {
+    print("Error extracting text from PDF: $e");
+    return "";
   }
 }

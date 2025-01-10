@@ -21,7 +21,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final Gemini gemini = Gemini.instance;
   List<ChatMessage> messages = [];
-  String welcomeMsg = "Hello! I'm Gemini, your assistant for summarizing PDF files. To upload a PDF for summary, just tap the green button in the bottom right corner.";
   ChatUser currentUser = ChatUser(id: "0", firstName: "You");
   ChatUser geminiUser = ChatUser(id: "1", firstName: "Gemini");
   bool _isSummaryAvailable = false;
@@ -35,8 +34,7 @@ class _HomePageState extends State<HomePage> {
     ChatMessage welcomeMessage = ChatMessage(
       user: geminiUser,
       createdAt: DateTime.now(),
-      text: welcomeMsg
-
+      text: "Hello! I'm Gemini, your assistant for summarizing PDF files. To upload a PDF for summary, just tap the green button in the bottom right corner."
     );
 
     setState(() {
@@ -195,7 +193,6 @@ class _HomePageState extends State<HomePage> {
         responseBuffer.write(partialResponse);
       },
           onDone: () {
-            // When the streaming is done, process the complete response
             String completeResponse = responseBuffer.toString();
 
         setState(() {
@@ -218,7 +215,9 @@ class _HomePageState extends State<HomePage> {
         });
       });
     } catch (e) {
-      print(e);
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Error during PDF analysis.')),
+      );
     }
   }
 
@@ -256,9 +255,9 @@ class _HomePageState extends State<HomePage> {
       if (pdfText.isEmpty) {
         Navigator.of(context).pop(); // Close loadingDialog
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Failed to extract text from the PDF.')),
+          const SnackBar(content: Text('No text in PDF to extract.')),
         );
-        print("Failed to extract text from the PDF.");
+        print("No text in PDF to extract.");
         return;
       }
     } catch (e) {
@@ -279,22 +278,19 @@ class _HomePageState extends State<HomePage> {
           responseBuffer.write(partialResponse);
         },
         onDone: () {
-          // When the streaming is done, process the complete response
           String completeResponse = responseBuffer.toString();
 
           setState(() {
             if (messages.isNotEmpty && messages.first.user == geminiUser) {
-              // Append the new response as a new message, preserving the previous one
               messages = [
                 ChatMessage(
                   user: geminiUser,
                   createdAt: DateTime.now(),
                   text: completeResponse,
                 ),
-                ...messages, // Add previous messages without replacement
+                ...messages,
               ];
             } else {
-              // Add the new response as the first message
               messages = [
                 ChatMessage(
                   user: geminiUser,
@@ -304,7 +300,6 @@ class _HomePageState extends State<HomePage> {
                 ...messages,
               ];
             }
-            // Ensure that only one summary message remains
             _isSummaryAvailable = true;
           });
         },
@@ -313,7 +308,7 @@ class _HomePageState extends State<HomePage> {
     } catch (e) {
       Navigator.of(context).pop();
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Error during PDF analysis.')),
+        const SnackBar(content: Text('Error during PDF summarization.')),
       );
     }
   }
@@ -321,12 +316,10 @@ class _HomePageState extends State<HomePage> {
 
 Future<String> _extractTextFromPDF(File file) async {
   try {
-    // Load the PDF document
+    String extractedText = "";
     final PdfDocument document =
         PdfDocument(inputBytes: file.readAsBytesSync());
-    String extractedText = "";
 
-    // Iterate through all pages to extract text
     for (int i = 0; i < document.pages.count; i++) {
       extractedText += PdfTextExtractor(document)
               .extractText(startPageIndex: i, endPageIndex: i) ??

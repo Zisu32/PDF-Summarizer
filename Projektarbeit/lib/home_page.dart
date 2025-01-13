@@ -5,6 +5,7 @@ import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:syncfusion_flutter_pdf/pdf.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:intl/intl.dart';
 
 const Color teal = Colors.teal;
 const Color grey = Colors.grey;
@@ -45,31 +46,61 @@ class _HomePageState extends State<HomePage> {
   void _downloadResponseAsPDF() async {
     if (messages.isNotEmpty) {
       ChatMessage? latestGeminiResponse =
-          messages.firstWhere((message) => message.user == geminiUser);
+      messages.firstWhere((message) => message.user == geminiUser);
 
       // Create a PDF document
       final PdfDocument document = PdfDocument();
-      final PdfPage page = document.pages.add();
-      page.graphics.drawString(
-        latestGeminiResponse.text,
-        PdfStandardFont(PdfFontFamily.helvetica, 18),
+      final PdfStandardFont font = PdfStandardFont(PdfFontFamily.helvetica, 14);
+      const double margin = 40.0; // Margin for A4 page
+
+      // Define the layout area within the page (excluding margins)
+      const double pageWidth = 595.0;
+      const double pageHeight = 842.0;
+      const Rect layoutRectangle = Rect.fromLTWH(
+        margin, // Left margin
+        margin, // Top margin
+        pageWidth - 2 * margin, // Width excluding margins
+        pageHeight - 2 * margin, // Height excluding margins
       );
 
-      // Get the directory to save the file
+      String responseText = latestGeminiResponse.text;
+
+      // Create a PdfTextElement for multi-page text layout
+      PdfTextElement textElement = PdfTextElement(
+        text: responseText,
+        font: font,
+      );
+
+      // Initialize current page and layout format
+      PdfLayoutFormat format = PdfLayoutFormat(
+        layoutType: PdfLayoutType.paginate,
+        breakType: PdfLayoutBreakType.fitPage,
+      );
+
+      // Draw the text
+      PdfPage currentPage = document.pages.add();
+      textElement.draw(
+        page: currentPage,
+        bounds: layoutRectangle,
+        format: format,
+      );
+
+      // Save document
       final directory = await getApplicationDocumentsDirectory();
-      String formattedDate = DateTime.now().toString().replaceAll(':', '-');
-      String path = "${directory.path}/${formattedDate}_GeminiResponse.pdf";
-      // Save File to path
+      String formattedDate = DateFormat('yy-MM-dd').format(DateTime.now());
+      String path = "${directory.path}/${formattedDate}_GeminiSummary.pdf";
       File file = File(path);
       await file.writeAsBytes(await document.save());
-
-      // Dispose the document
       document.dispose();
 
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text("PDF saved at: $path")),
       );
       print(path);
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("No summary to save.")),
+      );
     }
   }
 
@@ -322,8 +353,7 @@ Future<String> _extractTextFromPDF(File file) async {
 
     for (int i = 0; i < document.pages.count; i++) {
       extractedText += PdfTextExtractor(document)
-              .extractText(startPageIndex: i, endPageIndex: i) ??
-          "";
+              .extractText(startPageIndex: i, endPageIndex: i);
     }
 
     // Dispose the document

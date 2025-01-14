@@ -6,6 +6,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:syncfusion_flutter_pdf/pdf.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 
 const Color teal = Colors.teal;
 const Color grey = Colors.grey;
@@ -25,6 +26,7 @@ class _HomePageState extends State<HomePage> {
   ChatUser currentUser = ChatUser(id: "0", firstName: "You");
   ChatUser geminiUser = ChatUser(id: "1", firstName: "Gemini");
   bool _isSummaryAvailable = false;
+
   @override
   void initState() {
     super.initState();
@@ -33,10 +35,10 @@ class _HomePageState extends State<HomePage> {
 
   void _addWelcomeMessage() {
     ChatMessage welcomeMessage = ChatMessage(
-      user: geminiUser,
-      createdAt: DateTime.now(),
-      text: "Hello! I'm Gemini, your assistant for summarizing PDF files. To upload a PDF for summary, just tap the green button in the bottom right corner."
-    );
+        user: geminiUser,
+        createdAt: DateTime.now(),
+        text:
+            "Hello! I'm Gemini, your assistant for summarizing PDF files. To upload a PDF for summary, just tap the green button in the bottom right corner.");
 
     setState(() {
       messages = [welcomeMessage, ...messages];
@@ -50,7 +52,7 @@ class _HomePageState extends State<HomePage> {
 
       // Create a PDF document
       final PdfDocument document = PdfDocument();
-      final PdfStandardFont font = PdfStandardFont(PdfFontFamily.helvetica, 14);
+      final PdfStandardFont font = PdfStandardFont(PdfFontFamily.helvetica, 12);
       const double margin = 40.0; // Margin for A4 page
 
       // Define the layout area within the page (excluding margins)
@@ -58,12 +60,29 @@ class _HomePageState extends State<HomePage> {
       const double pageHeight = 842.0;
       const Rect layoutRectangle = Rect.fromLTWH(
         margin, // Left margin
-        margin, // Top margin
+        margin + 40.0, // Top margin (leave space for title)
         pageWidth - 2 * margin, // Width excluding margins
-        pageHeight - 2 * margin, // Height excluding margins
+        pageHeight - 2 * margin - 40.0, // Height excluding margins and title space
       );
 
       String responseText = latestGeminiResponse.text;
+
+      // Add a title to the first page
+      PdfPage currentPage = document.pages.add();
+      final PdfGraphics graphics = currentPage.graphics;
+      final PdfStandardFont titleFont = PdfStandardFont(PdfFontFamily.helvetica, 18);
+      const String title = "Gemini Response from the PDF Summarizer Tool";
+      Size titleSize = titleFont.measureString(title);
+      graphics.drawString(
+        title,
+        titleFont,
+        bounds: Rect.fromLTWH(
+          (pageWidth - titleSize.width) / 2, // Center horizontally
+          margin / 2, // Place above the content margin
+          titleSize.width,
+          titleSize.height,
+        ),
+      );
 
       // Create a PdfTextElement for multi-page text layout
       PdfTextElement textElement = PdfTextElement(
@@ -71,14 +90,13 @@ class _HomePageState extends State<HomePage> {
         font: font,
       );
 
-      // Initialize current page and layout format
+      // Initialize layout format
       PdfLayoutFormat format = PdfLayoutFormat(
         layoutType: PdfLayoutType.paginate,
         breakType: PdfLayoutBreakType.fitPage,
       );
 
-      // Draw the text
-      PdfPage currentPage = document.pages.add();
+      // Draw the text within the defined layout rectangle
       textElement.draw(
         page: currentPage,
         bounds: layoutRectangle,
@@ -103,6 +121,7 @@ class _HomePageState extends State<HomePage> {
       );
     }
   }
+
 
   void _showLoadingDialog() {
     showDialog(
@@ -200,9 +219,25 @@ class _HomePageState extends State<HomePage> {
         currentUser: currentUser,
         onSend: _sendMessage,
         messages: messages,
-        messageOptions: const MessageOptions(
-          currentUserContainerColor: teal,
-          currentUserTextColor: white,
+        messageOptions: MessageOptions(
+          currentUserContainerColor: Colors.teal,
+          currentUserTextColor: Colors.white,
+          messageTextBuilder: (ChatMessage message,
+              ChatMessage? previousMessage, ChatMessage? nextMessage) {
+            return _buildMarkdownMessage(message.text, message.user);
+          },
+        ),
+      ),
+    );
+  }
+
+  // Helper method to build the Markdown widget for chat messages
+  Widget _buildMarkdownMessage(String text, ChatUser user) {
+    return MarkdownBody(
+      data: text,
+      styleSheet: MarkdownStyleSheet(
+        p: TextStyle(
+          color: user.id == currentUser.id ? Colors.white : Colors.black,
         ),
       ),
     );
@@ -222,9 +257,8 @@ class _HomePageState extends State<HomePage> {
             "";
 
         responseBuffer.write(partialResponse);
-      },
-          onDone: () {
-            String completeResponse = responseBuffer.toString();
+      }, onDone: () {
+        String completeResponse = responseBuffer.toString();
 
         setState(() {
           if (messages.isNotEmpty && messages.first.user == geminiUser) {
@@ -301,7 +335,10 @@ class _HomePageState extends State<HomePage> {
     }
     try {
       StringBuffer responseBuffer = StringBuffer();
-      gemini.streamGenerateContent("Summarize this PDF:\n$pdfText").listen(
+      gemini
+          .streamGenerateContent(
+              "Summarize this PDF:\n$pdfText\nstart your response with:\nHere is your summarized PDF based on your uploaded PDF document\nend your respone with:\nIf you like the summary you can download the answer by pressing the green download button")
+          .listen(
         (event) {
           String partialResponse = event.content?.parts?.fold(
                   "", (previous, current) => "$previous${current.text}") ??
@@ -353,7 +390,7 @@ Future<String> _extractTextFromPDF(File file) async {
 
     for (int i = 0; i < document.pages.count; i++) {
       extractedText += PdfTextExtractor(document)
-              .extractText(startPageIndex: i, endPageIndex: i);
+          .extractText(startPageIndex: i, endPageIndex: i);
     }
 
     // Dispose the document
